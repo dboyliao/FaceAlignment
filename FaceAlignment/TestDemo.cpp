@@ -38,12 +38,12 @@ int main(){
     ifstream fin;
 
     for(int i = 0;i < test_img_num;i++){
-        string image_name = "./../../../Data/COFW_Dataset/testImages/";
+        string image_name = "./COFW_Dataset/testImages/";
         image_name = image_name + to_string(i+1) + ".jpg";
         Mat_<uchar> temp = imread(image_name,0);
         test_images.push_back(temp);
     }
-    fin.open("./../../../Data/COFW_Dataset/boundingbox_test.txt");
+    fin.open("./COFW_Dataset/boundingbox_test.txt");
     for(int i = 0;i < test_img_num;i++){
         BoundingBox temp;
         fin>>temp.start_x>>temp.start_y>>temp.width>>temp.height;
@@ -54,7 +54,7 @@ int main(){
     fin.close(); 
     
     ShapeRegressor regressor;
-    regressor.Load("./data/model.txt");
+    regressor.Load("./model.txt");
     while(true){
         int index = 1;
         cout<<"Input index:"<<endl;
@@ -66,8 +66,9 @@ int main(){
             circle(test_image_1,Point2d(current_shape(i,0),current_shape(i,1)),3,Scalar(255,0,0),-1,8,0);
         }
         imshow("result",test_image_1);
-        waitKey(0);
+        waitKey(3);
     }
+    destroyAllWindows();
     return 0;
 }
 

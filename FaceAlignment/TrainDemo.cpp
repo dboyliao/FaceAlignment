@@ -42,7 +42,7 @@ int main(){
     
     cout<<"Read images..."<<endl;
     for(int i = 0;i < img_num;i++){
-        string image_name = "./../../../Data/COFW_Dataset/trainingImages/";
+        string image_name = "./COFW_Dataset/trainingImages/";
         image_name = image_name + to_string(i+1) + ".jpg";
         Mat_<uchar> temp = imread(image_name,0);
         images.push_back(temp);
@@ -51,7 +51,7 @@ int main(){
     vector<Mat_<double> > ground_truth_shapes;
     vector<BoundingBox> bounding_box;
     ifstream fin;
-    fin.open("./../../../Data/COFW_Dataset/boundingbox.txt");
+    fin.open("./COFW_Dataset/boundingbox.txt");
     for(int i = 0;i < img_num;i++){
         BoundingBox temp;
         fin>>temp.start_x>>temp.start_y>>temp.width>>temp.height;
@@ -61,7 +61,7 @@ int main(){
     }
     fin.close(); 
 
-    fin.open("./../../../Data/COFW_Dataset/keypoints.txt");
+    fin.open("./COFW_Dataset/keypoints.txt");
     for(int i = 0;i < img_num;i++){
         Mat_<double> temp(landmark_num,2);
         for(int j = 0;j < landmark_num;j++){
@@ -78,7 +78,7 @@ int main(){
     ShapeRegressor regressor;
     regressor.Train(images,ground_truth_shapes,bounding_box,first_level_num,second_level_num,
                     candidate_pixel_num,fern_pixel_num,initial_number);
-    regressor.Save("./data/model.txt");
+    regressor.Save("./model.txt");
 
     return 0;
 }
