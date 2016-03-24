@@ -96,8 +96,10 @@ void SimilarityTransform(const Mat_<double>& shape1, const Mat_<double>& shape2,
     calcCovarMatrix(temp2,covariance2,mean2,CV_COVAR_COLS);
 
     cout << "cov1: " << endl << " " << endl << covariance1 << endl << endl;
+    cout << "mean1: " << endl << " " << endl << mean1 << endl << endl;
     cout << "cov2: " << endl << " " << endl << covariance2 << endl << endl;
-    
+    cout << "mean2: " << endl << " " << endl << mean2 << endl << endl;
+
     double s1 = sqrt(norm(covariance1));
     double s2 = sqrt(norm(covariance2));
     scale = s1 / s2; 
