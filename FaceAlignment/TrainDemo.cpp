@@ -73,7 +73,12 @@ int main(){
         ground_truth_shapes.push_back(temp);
     }
 
-    fin.close(); 
+    fin.close();
+
+    cout << "training set size: " << endl << " " << endl << images.size() << endl << endl;
+    cout << "ground truth shape size: " << endl << " " << endl << ground_truth_shapes[0].size() << endl << endl;
+    cout << "ground truth shape sample: " << endl << " " << endl << ground_truth_shapes[0] << endl << endl;
+    cout << "num of bounding box: " << endl << " " << endl << bounding_box.size() << endl << endl;
     
     ShapeRegressor regressor;
     regressor.Train(images,ground_truth_shapes,bounding_box,first_level_num,second_level_num,

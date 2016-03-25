@@ -19,6 +19,11 @@ exp_transpose:
 	make clean;
 	mv a.out $(OUTPUT_DIR)/exp_transpose
 
+cons_mat:
+	$(CPP) $(CPP_FLAGS) $(SRC_DIR)/*.h $(SRC_DIR)/*.cpp try_construct_mat.cpp;
+	make clean;
+	mv a.out $(OUTPUT_DIR)/cons_mat
+
 clean:
 	rm -f $(SRC_DIR)/*.gch;
 

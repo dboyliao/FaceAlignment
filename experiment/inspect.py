@@ -8,7 +8,7 @@ DATA_DIR = "/Users/DboyLiao/Works/Projects/Avatar-Program/mobile/dev/FaceAlignme
 
 def get_bound(index):
     index = int(index)
-    boundbox_path = os.path.join(DATA_DIR, "boundingbox.txt")
+    boundbox_path = os.path.join(DATA_DIR, "boundingbox_test.txt")
     with open(boundbox_path, "r") as rf:
         lines = rf.readlines()
 
@@ -18,7 +18,7 @@ def main():
 
     while True:
         image_num = raw_input("Please enter the number of the images: ")
-        image_path = os.path.join(DATA_DIR, "trainingImages", image_num + ".jpg")
+        image_path = os.path.join(DATA_DIR, "testImages", image_num + ".jpg")
         image = cv2.imread(image_path)
         image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 

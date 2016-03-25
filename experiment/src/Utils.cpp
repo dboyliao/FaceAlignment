@@ -92,16 +92,23 @@ void SimilarityTransform(const Mat_<double>& shape1, const Mat_<double>& shape2,
     Mat_<double> covariance1, covariance2;
     Mat_<double> mean1,mean2;
     // calculate covariance matrix
-    calcCovarMatrix(temp1,covariance1,mean1,CV_COVAR_COLS);
-    calcCovarMatrix(temp2,covariance2,mean2,CV_COVAR_COLS);
+    calcCovarMatrix(temp1, covariance1, mean1, CV_COVAR_COLS);
+    calcCovarMatrix(temp2, covariance2, mean2, CV_COVAR_COLS);
 
+    cout << "temp1: " << endl << " " << endl << temp1 << endl << endl;
+    cout << "temp2: " << endl << " " << endl << temp2 << endl << endl;
     cout << "cov1: " << endl << " " << endl << covariance1 << endl << endl;
+    cout << covariance1.size() << endl;
     cout << "mean1: " << endl << " " << endl << mean1 << endl << endl;
     cout << "cov2: " << endl << " " << endl << covariance2 << endl << endl;
+    cout << covariance2.size() << endl;
     cout << "mean2: " << endl << " " << endl << mean2 << endl << endl;
 
     double s1 = sqrt(norm(covariance1));
     double s2 = sqrt(norm(covariance2));
+
+    cout << "s1: " << s1 << endl;
+    cout << "s2: " << s2 << endl;
     scale = s1 / s2; 
     temp1 = 1.0 / s1 * temp1;
     temp2 = 1.0 / s2 * temp2;

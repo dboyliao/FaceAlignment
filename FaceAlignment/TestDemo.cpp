@@ -32,7 +32,7 @@ using namespace cv;
 int main(){
     vector<Mat_<uchar> > test_images;
     vector<BoundingBox> test_bounding_box;
-    int test_img_num = 507;
+    int test_img_num = 509;
     int initial_number = 20;
     int landmark_num = 29;
     ifstream fin;
