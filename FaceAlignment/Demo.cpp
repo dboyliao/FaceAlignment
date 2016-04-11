@@ -5,9 +5,6 @@
 
 #include "FaceAlignment.h"
 
-
-int main(){
-     
-    
+int main()
+{
 }
-

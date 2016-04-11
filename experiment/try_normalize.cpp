@@ -10,12 +10,14 @@ int main()
 {
     vector<double> v1(10);
 
-    for (int i=0; i < 10; i++){
-        v1[i] = (double) i;
+    for (int i = 0; i < 10; i++)
+    {
+        v1[i] = (double)i;
     }
 
     normalize(v1, v1); // v1 / sqrt((v1**2).sum())
-    for (int i = 0; i < 10; i++){
+    for (int i = 0; i < 10; i++)
+    {
         cout << v1[i] << endl;
     }
 
