@@ -28,9 +28,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "FaceAlignment.h"
 using namespace std;
 using namespace cv;
-vector<Mat_<double>> FernCascade::Train(const vector<Mat_<uchar>>& images,
-                                        const vector<Mat_<double>>& current_shapes,
-                                        const vector<Mat_<double>>& ground_truth_shapes,
+vector<Mat_<double> > FernCascade::Train(const vector<Mat_<uchar> >& images,
+                                        const vector<Mat_<double> >& current_shapes,
+                                        const vector<Mat_<double> >& ground_truth_shapes,
                                         const vector<BoundingBox>& bounding_box,
                                         const Mat_<double>& mean_shape,
                                         int second_level_num,
@@ -41,7 +41,7 @@ vector<Mat_<double>> FernCascade::Train(const vector<Mat_<uchar>>& images,
 {
     Mat_<double> candidate_pixel_locations(candidate_pixel_num, 2);
     Mat_<int> nearest_landmark_index(candidate_pixel_num, 1);
-    vector<Mat_<double>> regression_targets;
+    vector<Mat_<double> > regression_targets;
     RNG random_generator(getTickCount());
     second_level_num_ = second_level_num;
 
@@ -88,7 +88,7 @@ vector<Mat_<double>> FernCascade::Train(const vector<Mat_<uchar>>& images,
     // get densities of candidate pixels for each image
     // for densities: each row is the pixel densities at each candidate pixels for an image
     // Mat_<double> densities(images.size(), candidate_pixel_num);
-    vector<vector<double>> densities;
+    vector<vector<double> > densities;
     densities.resize(candidate_pixel_num);
     for (int i = 0; i < images.size(); i++)
     {
@@ -125,7 +125,7 @@ vector<Mat_<double>> FernCascade::Train(const vector<Mat_<uchar>>& images,
     }
 
     // train ferns
-    vector<Mat_<double>> prediction;
+    vector<Mat_<double> > prediction;
     prediction.resize(regression_targets.size());
     for (int i = 0; i < regression_targets.size(); i++)
     {
@@ -135,7 +135,7 @@ vector<Mat_<double>> FernCascade::Train(const vector<Mat_<uchar>>& images,
     clock_t t = clock();
     for (int i = 0; i < second_level_num; i++)
     {
-        vector<Mat_<double>> temp = ferns_[i].Train(densities, covariance, candidate_pixel_locations, nearest_landmark_index, regression_targets, fern_pixel_num);
+        vector<Mat_<double> > temp = ferns_[i].Train(densities, covariance, candidate_pixel_locations, nearest_landmark_index, regression_targets, fern_pixel_num);
         // update regression targets
         for (int j = 0; j < temp.size(); j++)
         {

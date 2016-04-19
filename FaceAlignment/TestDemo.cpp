@@ -31,7 +31,7 @@ using namespace cv;
 
 int main()
 {
-    vector<Mat_<uchar>> test_images;
+    vector<Mat_<uchar> > test_images;
     vector<BoundingBox> test_bounding_box;
     int test_img_num = 509;
     int initial_number = 20;
@@ -64,12 +64,15 @@ int main()
         cout << "Input index:" << endl;
         cin >> index;
 
+        BoundingBox box = test_bounding_box[index];
         Mat_<double> current_shape = regressor.Predict(test_images[index], test_bounding_box[index], initial_number);
         Mat test_image_1 = test_images[index].clone();
         for (int i = 0; i < landmark_num; i++)
         {
             circle(test_image_1, Point2d(current_shape(i, 0), current_shape(i, 1)), 3, Scalar(255, 0, 0), -1, 8, 0);
         }
+
+        rectangle(test_image_1, Point(box.start_x, box.start_y), Point(box.start_x + box.width , box.start_y + box.height), Scalar(255, 0, 0));
         imshow("result", test_image_1);
         waitKey(3);
     }

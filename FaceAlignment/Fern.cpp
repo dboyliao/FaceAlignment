@@ -29,11 +29,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 using namespace std;
 using namespace cv;
 
-vector<Mat_<double>> Fern::Train(const vector<vector<double>>& candidate_pixel_intensity,
+vector<Mat_<double> > Fern::Train(const vector<vector<double> >& candidate_pixel_intensity,
                                  const Mat_<double>& covariance,
                                  const Mat_<double>& candidate_pixel_locations,
                                  const Mat_<int>& nearest_landmark_index,
-                                 const vector<Mat_<double>>& regression_targets,
+                                 const vector<Mat_<double> >& regression_targets,
                                  int fern_pixel_num)
 {
     // selected_pixel_index_: fern_pixel_num*2 matrix, the index of selected pixels pairs in fern
@@ -140,7 +140,7 @@ vector<Mat_<double>> Fern::Train(const vector<vector<double>>& candidate_pixel_i
     }
 
     // determine the bins of each shape
-    vector<vector<int>> shapes_in_bin;
+    vector<vector<int> > shapes_in_bin;
     int bin_num = pow(2.0, fern_pixel_num);
     shapes_in_bin.resize(bin_num);
     for (int i = 0; i < regression_targets.size(); i++)
@@ -159,7 +159,7 @@ vector<Mat_<double>> Fern::Train(const vector<vector<double>>& candidate_pixel_i
     }
 
     // get bin output
-    vector<Mat_<double>> prediction;
+    vector<Mat_<double> > prediction;
     prediction.resize(regression_targets.size());
     bin_output_.resize(bin_num);
     for (int i = 0; i < bin_num; i++)

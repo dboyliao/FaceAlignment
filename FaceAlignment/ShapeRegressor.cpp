@@ -43,8 +43,8 @@ ShapeRegressor::ShapeRegressor()
  * @param fern_pixel_num number of pixel pairs in a fern
  * @param initial_num number of initial shapes for each input image
  */
-void ShapeRegressor::Train(const vector<Mat_<uchar>>& images,
-                           const vector<Mat_<double>>& ground_truth_shapes,
+void ShapeRegressor::Train(const vector<Mat_<uchar> >& images,
+                           const vector<Mat_<double> >& ground_truth_shapes,
                            const vector<BoundingBox>& bounding_box,
                            int first_level_num, int second_level_num,
                            int candidate_pixel_num, int fern_pixel_num,
@@ -56,10 +56,10 @@ void ShapeRegressor::Train(const vector<Mat_<uchar>>& images,
     first_level_num_ = first_level_num;
     landmark_num_ = ground_truth_shapes[0].rows;
     // data augmentation and multiple initialization
-    vector<Mat_<uchar>> augmented_images;
+    vector<Mat_<uchar> > augmented_images;
     vector<BoundingBox> augmented_bounding_box;
-    vector<Mat_<double>> augmented_ground_truth_shapes;
-    vector<Mat_<double>> current_shapes;
+    vector<Mat_<double> > augmented_ground_truth_shapes;
+    vector<Mat_<double> > current_shapes;
 
     RNG random_generator(getTickCount());
     for (int i = 0; i < images.size(); i++)
@@ -89,7 +89,7 @@ void ShapeRegressor::Train(const vector<Mat_<uchar>>& images,
 
     // train fern cascades
     fern_cascades_.resize(first_level_num);
-    vector<Mat_<double>> prediction;
+    vector<Mat_<double> > prediction;
     for (int i = 0; i < first_level_num; i++)
     {
         cout << "Training fern cascades: " << i + 1 << " out of " << first_level_num << endl;

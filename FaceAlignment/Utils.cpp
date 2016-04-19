@@ -29,7 +29,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 using namespace std;
 using namespace cv;
 
-Mat_<double> GetMeanShape(const vector<Mat_<double>>& shapes,
+Mat_<double> GetMeanShape(const vector<Mat_<double> >& shapes,
                           const vector<BoundingBox>& bounding_box)
 {
     Mat_<double> result = Mat::zeros(shapes[0].rows, 2, CV_64FC1);
