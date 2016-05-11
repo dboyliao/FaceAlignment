@@ -1,4 +1,4 @@
-OUTPUT_DIR=exec
+OUTPUT_DIR=bin
 CPP=g++
 SRC_DIR=src
 CPP_FLAGS=`pkg-config --cflags --libs opencv` -I src
